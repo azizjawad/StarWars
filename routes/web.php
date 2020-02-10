@@ -12,4 +12,5 @@
 */
 
 Route::get('/','Home@index');
-Route::post('home/save/{slug}','Home@save');
+Route::post('home/save/people','Home@savePeoples');
+Route::post('home/save/films','Home@saveFilms');

@@ -2000,8 +2000,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       data: false,
       people_btn: "Pull People",
-      show_loading: false,
       film_btn: "Pull Films",
+      show_loading: false,
       flag: 0
     };
   },
@@ -2042,11 +2042,10 @@ __webpack_require__.r(__webpack_exports__);
         _this3.film_btn = 'Pull Films';
       });
     },
-    beforeDestroy: function beforeDestroy() {
-      console.log('Main Vue destroyed');
-    },
     save_data: function save_data() {
-      axios.post('home/save/' + this.flag, this.data.results).then(function (res) {});
+      axios.post('home/save/' + this.flag, this.data.results).then(function (res) {
+        res.data.status ? sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('Success !!', res.data.message, 'success') : sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('Hey There !!', res.data.message, 'warning');
+      });
     }
   }
 });
@@ -50243,8 +50242,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/aziz/Desktop/houzeo-assignment/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/aziz/Desktop/houzeo-assignment/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/desktop30/Desktop/StarWars/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/desktop30/Desktop/StarWars/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -36,8 +36,8 @@
             return {
                 data:false,
                 people_btn:"Pull People",
-                show_loading:false,
                 film_btn: "Pull Films",
+                show_loading:false,
                 flag:0,
            }
         },
@@ -69,12 +69,9 @@
                     this.film_btn = 'Pull Films';
                 });
             },
-            beforeDestroy() {
-                console.log('Main Vue destroyed')
-            },
             save_data(){
                 axios.post('home/save/'+this.flag,this.data.results).then(res => {
-
+                    (res.data.status) ? swal('Success !!',res.data.message,'success') : swal('Hey There !!',res.data.message,'warning');
                 });
             }
         }

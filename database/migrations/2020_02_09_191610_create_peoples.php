@@ -22,6 +22,7 @@ class CreatePeoples extends Migration
             $table->text('gender');
             $table->text('hair_color');
             $table->text('skin_color');
+            $table->longText('films');
             $table->timestamps();
         });
     }

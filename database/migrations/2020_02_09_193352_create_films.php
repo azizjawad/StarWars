@@ -16,11 +16,12 @@ class CreateFilms extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('film_id')->unique();
-            $table->text('title');
+            $table->string('title');
             $table->longText('opening_crawl');
-            $table->text('director');
-            $table->text('producer');
+            $table->string('director');
+            $table->string('producer');
             $table->date('release_date');
+            $table->longText('characters');
             $table->timestamps();
         });
     }
