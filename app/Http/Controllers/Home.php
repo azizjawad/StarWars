@@ -21,7 +21,7 @@ class Home extends Controller
             $key['film_id'] = ($key['url']) ? explode('/', $key['url'])[5] : null;
             // only taking Id from URl to check if it is unique
 
-            $validator = Validator::make($key, [
+            $film_validator = Validator::make($key, [
                 'film_id'       => 'required|unique:films',
                 'opening_crawl' => 'required',
                 'director'      => 'required',
@@ -29,6 +29,8 @@ class Home extends Controller
                 'release_date'  => 'required',
                 'characters'    => 'required'
             ]);
+
+            // this is to pull all characters under that film
 
             foreach($key['characters'] as $people_url){
 
@@ -43,7 +45,7 @@ class Home extends Controller
                 }
             }
 
-            if(!$validator->fails()) {
+            if(!$film_validator->fails()) {
 
                 $fields[] = $this->films_fields($key,$key['film_id']);
             }
@@ -69,7 +71,7 @@ class Home extends Controller
             $key['people_id'] = ($key['url']) ? explode('/', $key['url'])[5] : null;
             // only taking Id from URl to check if it is unique
 
-            $validator = Validator::make($key, [
+            $people_validator = Validator::make($key, [
                 'people_id'     => 'required|unique:peoples',
                 'name'          => 'required',
                 'birth_year'    => 'required',
@@ -80,6 +82,8 @@ class Home extends Controller
                 'films'         => 'required'
             ]);
             
+            // this is to pull all films under that character
+
             foreach($key['films'] as $flim_url){
 
                 $key['film_id'] = explode('/', $flim_url)[5];
@@ -95,7 +99,7 @@ class Home extends Controller
                 }
             }
 
-            if(!$validator->fails()) {
+            if(!$people_validator->fails()) {
                 
                 $fields[] = $this->people_fields($key,$key['people_id']);
             }
