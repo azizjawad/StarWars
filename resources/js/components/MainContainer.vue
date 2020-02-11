@@ -4,13 +4,13 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <strong> Star Wars</strong>
+                        <strong> Star Wars Api Data</strong>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
                             <button class="btn btn-primary" v-on:click="pull_members()" type="submit" v-text="people_btn"></button>
-                            <button class="btn btn-primary" v-on:click="pull_films()" type="submit" v-text="film_btn"></button>
-                            <button v-if="data" class="btn btn-primary" v-on:click="save_data()" type="submit">Save Data</button>
+                            &nbsp;&nbsp;&nbsp;<button class="btn btn-primary" v-on:click="pull_films()" type="submit" v-text="film_btn"></button>
+                            &nbsp;&nbsp;&nbsp;<button v-if="data" class="btn btn-primary" v-on:click="save_data()" type="submit" v-text="save_btn"></button>
                         </div>
                         <members-table v-if="flag == 'people'" :members="data"></members-table>
                         <films-table v-if="flag == 'films'" :films="data"></films-table>
@@ -37,6 +37,7 @@
                 data:false,
                 people_btn:"Pull People",
                 film_btn: "Pull Films",
+                save_btn: "Save Data",
                 show_loading:false,
                 flag:0,
            }
@@ -70,8 +71,10 @@
                 });
             },
             save_data(){
+                this.save_btn = "Please wait ...";
                 axios.post('home/save/'+this.flag,this.data.results).then(res => {
-                    (res.data.status) ? swal('Success !!',res.data.message,'success') : swal('Hey There !!',res.data.message,'warning');
+                    this.save_btn = "Save Data";
+                    swal('Success !!',res.data.message,'success');
                 });
             }
         }

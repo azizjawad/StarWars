@@ -2001,6 +2001,7 @@ __webpack_require__.r(__webpack_exports__);
       data: false,
       people_btn: "Pull People",
       film_btn: "Pull Films",
+      save_btn: "Save Data",
       show_loading: false,
       flag: 0
     };
@@ -2043,8 +2044,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     save_data: function save_data() {
+      var _this4 = this;
+
+      this.save_btn = "Please wait ...";
       axios.post('home/save/' + this.flag, this.data.results).then(function (res) {
-        res.data.status ? sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('Success !!', res.data.message, 'success') : sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('Hey There !!', res.data.message, 'warning');
+        _this4.save_btn = "Save Data";
+        sweetalert__WEBPACK_IMPORTED_MODULE_0___default()('Success !!', res.data.message, 'success');
       });
     }
   }
@@ -37581,7 +37586,7 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v(" "),
+                _vm._v("\n                           "),
                 _c("button", {
                   staticClass: "btn btn-primary",
                   attrs: { type: "submit" },
@@ -37592,21 +37597,18 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v(" "),
+                _vm._v("\n                           "),
                 _vm.data
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" },
-                        on: {
-                          click: function($event) {
-                            return _vm.save_data()
-                          }
+                  ? _c("button", {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit" },
+                      domProps: { textContent: _vm._s(_vm.save_btn) },
+                      on: {
+                        click: function($event) {
+                          return _vm.save_data()
                         }
-                      },
-                      [_vm._v("Save Data")]
-                    )
+                      }
+                    })
                   : _vm._e()
               ]),
               _vm._v(" "),
@@ -37687,7 +37689,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("strong", [_vm._v(" Star Wars")])
+      _c("strong", [_vm._v(" Star Wars Api Data")])
     ])
   }
 ]
@@ -49968,6 +49970,9 @@ Vue.component('films-table', __webpack_require__(/*! ./components/Films */ "./re
 
 var app = new Vue({
   el: '#app'
+});
+$(document).ready(function () {
+  $('#peoples, #films').DataTable();
 });
 
 /***/ }),

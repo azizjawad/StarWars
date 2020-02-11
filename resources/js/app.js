@@ -32,3 +32,8 @@ Vue.component('films-table', require('./components/Films').default);
 const app = new Vue({
     el: '#app',
 });
+
+
+$(document).ready(function() {
+    $('#peoples, #films').DataTable();
+} );
